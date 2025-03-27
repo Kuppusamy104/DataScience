@@ -31,7 +31,7 @@ class Univariate():
     def Univariate(dataset,quan):
         descriptive =pd.DataFrame(index=["Mean","Median","Mode",
                                      "Q1:25%","Q2:50%",
-                                     "Q3:75%","99%","Q4:100%","IQR","1.5rule","Lesser","Greater","Min","Max","kurtosis","skew"],columns=quan)
+                                     "Q3:75%","99%","Q4:100%","IQR","1.5rule","Lesser","Greater","Min","Max","kurtosis","skew","Var","Std"],columns=quan)
         for columnName in quan:
             descriptive[columnName]["Mean"] = dataset[columnName].mean()
             descriptive[columnName]["Median"] = dataset[columnName].median()
@@ -49,6 +49,8 @@ class Univariate():
             descriptive[columnName]["Max"]=dataset[columnName].max()
             descriptive[columnName]["kurtosis"]= dataset[columnName].kurtosis()
             descriptive[columnName]["skew"]=dataset[columnName].skew()
+            descriptive[columnName]["Var"]=dataset[columnName].var()
+            descriptive[columnName]["Std"]=dataset[columnName].std()
         return descriptive
 
     def freTable(columnName,datset):
